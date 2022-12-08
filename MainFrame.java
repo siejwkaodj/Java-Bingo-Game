@@ -44,7 +44,6 @@ import java.util.*;
  */
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
-	Scanner scan = new Scanner(System.in);
 	Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension screenSize = kit.getScreenSize();
 	
@@ -60,11 +59,11 @@ public class MainFrame extends JFrame {
     GameFrame gf;
     
     // 관리자 모드 - 키면 디버깅 용이함
-    public static final boolean adminMode = false;
+    public static final boolean adminMode = true;
     
     MainFrame(String title){
         super(title);
-        this.setSize(1000, 450);
+        this.setSize((int)(screenSize.width * 0.7), (int)(screenSize.height * 0.5));
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);   // 바탕화면 중앙에 위치시킴
         init();
