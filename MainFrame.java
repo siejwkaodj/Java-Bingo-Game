@@ -59,10 +59,6 @@ public class MainFrame extends JFrame {
     
     GameFrame gf;
     
-    
-    // member변수들
-    int txtFileNum;
-    
     // 관리자 모드 - 키면 디버깅 용이함
     public static final boolean adminMode = false;
     
