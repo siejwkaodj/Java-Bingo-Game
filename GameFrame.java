@@ -298,16 +298,12 @@ public class GameFrame extends JFrame{
 			userBoardTiles[y][x].repaint();
 			
 			// 선택 단어 좌표 출력 부분
-//			if(MainFrame.adminMode) {
-				System.out.println("user 선택 - " + word + "\n");
-				System.out.println("user - userBoard [" + y + ", " + x + "] 선택");
-//			}
+			System.out.println("user 선택 - " + word + "\n");
+			System.out.println("user - userBoard [" + y + ", " + x + "] 선택");
 			
 		}else{
 			userRecentSelectWord.setText("");
-//			if(MainFrame.adminMode) {
-				System.out.println("\"" + word + "\"는 빙고판에 없습니다.");
-//			}
+			System.out.println("\"" + word + "\"는 빙고판에 없습니다.");
 		}
 		
 		// com에도 있다면 add, com board 좌표 반환
@@ -342,9 +338,9 @@ public class GameFrame extends JFrame{
 				userBoardTiles[y][x].revalidate();
 				userBoardTiles[y][x].repaint();
 				
-//						if(MainFrame.adminMode) {
-					System.out.println("com - userBoard [" + userCoord[0] + ", " + userCoord[1] + "] 선택");
-//						}
+
+				System.out.println("com - userBoard [" + userCoord[0] + ", " + userCoord[1] + "] 선택");
+
 			}else {
 				System.out.println("com - userBoard 선택 - 선택할 수 있는 타일이 더 이상 없습니다!");
 			}

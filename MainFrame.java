@@ -59,7 +59,7 @@ public class MainFrame extends JFrame {
     GameFrame gf;
     
     // 관리자 모드 - 키면 디버깅 용이함
-    public static final boolean adminMode = true;
+    public static final boolean adminMode = false;
     
     MainFrame(String title){
         super(title);
@@ -78,8 +78,13 @@ public class MainFrame extends JFrame {
     	Toolkit kit = Toolkit.getDefaultToolkit();
         
         // 아이콘 설정
-        Image img = kit.getImage("BINGO.png");
-        this.setIconImage(img);
+    	try {
+    		Image img = kit.getImage("BINGO.png");
+            this.setIconImage(img);	
+    	}catch(Exception e){
+    		System.out.println("이미지 파일이 경로에 없습니다.\n프로젝트 폴더/image 폴더에 BINGO.png 파일을 추가해 주세요!\n" + e);
+    	}
+        
         frame.setLayout(new BorderLayout());	// 컨테이너 레이아웃 설정 -> BorderLayout
         
         // panel 설정
@@ -186,18 +191,15 @@ public class MainFrame extends JFrame {
     	upper.setPreferredSize(new Dimension(screenSize.width, 100));
     	lower.setPreferredSize(new Dimension(screenSize.width, screenSize.height - 100));
     	
-//    	statisticScreen.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 100));
     	statisticScreen.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-    	// JOptionPane.showMessageDialog(this, "Game Start!", "Alert", JOptionPane.INFORMATION_MESSAGE);
     	// 전환 버튼 설정
         JButton changeScreenBtn = new JButton("메인화면으로 돌아가기");
         
         txtPane = new JTextPane();
         txtPane.setEditable(false);
         
-        // 버튼 액션
+        // 버튼 액션 - 화면 전환
         changeScreenBtn.addActionListener(e-> {
-//        	cl.next(panel);	// 화면 전환
         	cl.show(panel, "startScreen");	// 버튼 화면전환
         });	
         
@@ -296,8 +298,6 @@ public class MainFrame extends JFrame {
     				}
     			}catch(NumberFormatException e1) {	// string 입력 처리
     				message("n은 2 이상의 정수를 입력해 주세요.", JOptionPane.ERROR_MESSAGE);
-//    			}catch(Exception e2) {
-//    				System.out.println("Error - n 입력 에러\n" + e2);
     			}
         	}
         });
@@ -329,11 +329,6 @@ public class MainFrame extends JFrame {
         menuButtons.add(start);
         menuButtons.add(exit);
         
-        // startScreen에 menuButtons, changeFileBtn, changeScreenBtn 추가
-//        startScreen.add(menuButtons, BorderLayout.NORTH);
-//        startScreen.add(changeFileBtn);
-//        startScreen.add(changeScreenBtn, BorderLayout.NORTH);
-        
         top.add(menuButtons);
         top.add(changeFileBtn);
         top.add(changeScreenBtn);
@@ -341,11 +336,9 @@ public class MainFrame extends JFrame {
         // 배경 설정
         ImageIcon imgIcon = new ImageIcon("image/BINGO.png");
         JLabel backgroundImgJLabel = new JLabel(imgIcon);
-//        startScreen.add(backgroundImgJLabel);
         mid.add(backgroundImgJLabel);
         
         // 현재 단어장 파일 이름 표시 라벨 추가
-//        startScreen.add(wordFileNameLabel);
         bottom.add(wordFileNameLabel);
         
         startScreen.add(top, BorderLayout.NORTH);
@@ -361,7 +354,6 @@ public class MainFrame extends JFrame {
 	}
 	
 	// getter, setter
-	
 	public static void setCardLayout(String name) {
 		cl.show(panel, name);
 	}

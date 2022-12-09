@@ -22,8 +22,7 @@ public class FileManager{	// Word파일, result.txt파일 관리하는 클래스
     private static double userWinRate;
     private static double comWinRate;
     // Constructor
-    FileManager(){
-    }
+    FileManager(){  }
 
     // Methods
 
